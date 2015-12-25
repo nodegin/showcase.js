@@ -107,6 +107,7 @@ module.exports = new (ShowcaseView = (function() {
       color: '#fff',
       cursor: 'default',
       display: 'flex',
+      opacity: 0,
       justifyContent: 'center'
     });
     ref = this.buildBlocks(), blockLeft = ref[0], blockTop = ref[1], blockRight = ref[2], blockBottom = ref[3];
@@ -169,12 +170,14 @@ module.exports = new (ShowcaseView = (function() {
       display: 'block',
       fontSize: '16pt',
       marginBottom: '2rem'
-    })).append(this.caption);
+    })).append($('<span/>').text(this.caption).css({
+      lineHeight: '28px'
+    }));
     buttonWrapper = $('<div/>').appendTo(textContent).css({
       marginTop: '4rem',
       textAlign: 'right'
     });
-    return button = $('<button/>').appendTo(buttonWrapper).text(this.action).css({
+    button = $('<button/>').appendTo(buttonWrapper).text(this.action).css({
       background: "rgba(" + (this.accent.join(',')) + ",.5)",
       border: 0,
       borderRadius: 4,
@@ -205,6 +208,9 @@ module.exports = new (ShowcaseView = (function() {
         }
       };
     })(this));
+    return this._product.animate({
+      opacity: 1
+    }, 250);
   };
 
   return ShowcaseView;
