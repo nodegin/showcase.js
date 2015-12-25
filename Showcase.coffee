@@ -67,6 +67,7 @@ module.exports = new class ShowcaseView
       color: '#fff'
       cursor: 'default'
       display: 'flex'
+      opacity: 0
       justifyContent: 'center'
     
     [blockLeft, blockTop, blockRight, blockBottom] = @buildBlocks()
@@ -118,7 +119,8 @@ module.exports = new class ShowcaseView
       display: 'block'
       fontSize: '16pt'
       marginBottom: '2rem'
-    .append @caption
+    .append $('<span/>').text(@caption).css
+      lineHeight: '28px'
     
     buttonWrapper = $('<div/>').appendTo(textContent).css
       marginTop: '4rem'
@@ -134,3 +136,5 @@ module.exports = new class ShowcaseView
     .on 'mousedown', => button.css { background: "rgba(#{@accent.join(',')},.55)" }
     .on 'mouseleave', => button.css { background: "rgba(#{@accent.join(',')},.6)" }
     .on 'click', => @callback() if @callback
+    
+    @_product.animate { opacity: 1 }, 250
