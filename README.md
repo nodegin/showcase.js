@@ -33,3 +33,7 @@ Simply requires it and it will returns a new showcase
 `setAction`: Sets the action button text (e.g. Next, Done, Close, etc.)
 
 `setCallback`: Sets the callback function when user clicks the action button
+
+## Dependency
+
+**jQuery** is required
