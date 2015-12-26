@@ -35,7 +35,7 @@ module.exports = new class ShowcaseView
   
   setCallback: (@callback)-> @
   
-  dispose: -> @_product.fadeOut 150, -> @remove() if @_product isnt null
+  dispose: -> @_product.fadeOut 150, -> @remove() if @_product?
   
   buildBlocks: ->
     i = 0
