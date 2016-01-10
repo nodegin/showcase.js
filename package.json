@@ -1,0 +1,24 @@
+{
+  "name": "showcase.js",
+  "version": "1.0.0",
+  "description": "ShowcaseView on client-side",
+  "main": "Showcase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodegin/showcase.js.git"
+  },
+  "keywords": [
+    "showcase",
+    "demo",
+    "tutorial"
+  ],
+  "author": "nodegin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodegin/showcase.js/issues"
+  },
+  "homepage": "https://github.com/nodegin/showcase.js#readme"
+}
