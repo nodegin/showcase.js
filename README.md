@@ -12,6 +12,10 @@ Simply requires it and it will returns a new showcase
 
 ![usage](https://cloud.githubusercontent.com/assets/8536244/12004316/b0458c7e-ab8a-11e5-8ce3-4db8f0cbc1c5.png)
 
+## Install
+
+`npm install showcase.js`
+
 ## Preview
 
 ![preview](https://cloud.githubusercontent.com/assets/8536244/12004303/366a31c6-ab89-11e5-9023-74f26b2feb4c.png)
