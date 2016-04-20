@@ -4,7 +4,7 @@ Porting Android's ShowcaseView onto client-side
 
 No CSS is required due to all styling handled within the script
 
-Only ~140 lines of CoffeeScript code :coffee:
+Only ~180 lines of CoffeeScript code :coffee:
 
 ## Usage
 
@@ -33,6 +33,8 @@ Simply requires it and it will returns a new showcase
 `setAction`: Sets the action button text (e.g. Next, Done, Close, etc.)
 
 `setCallback`: Sets the callback function when user clicks the action button
+
+`setDebug`: Sets the debug mode to on / off
 
 ## Dependency
 

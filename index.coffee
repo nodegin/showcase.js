@@ -13,7 +13,7 @@
   background: 'rgba(0,0,0,0)'
   accent: [200, 200, 200]
   radius: 0
-  location: [0, 0]
+  location: null
   title: ''
   caption: ''
   action: 'Next'
@@ -22,11 +22,10 @@
   setBackground: (@background)-> @
 
   setAccentColor: (color)->
-    shorthandRegex = ;
     color = color.replace /^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b)-> r + r + g + g + b + b
     result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec color
     @accent =
-      if result then [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)]
+      if result then [+"0x#{result[1]}", +"0x#{result[2]}", +"0x#{result[3]}"]
       else @accent JSON.parse '[' + color.match(/(\d{1,3}\,?){3}/)[0].replace(/\,$/, '') + ']'
     @
 
@@ -43,6 +42,8 @@
   setAction: (@action)-> @
 
   setCallback: (@callback)-> @
+  
+  setDebug: (@debug)-> @
 
   dispose: ->
     prod = @_product
@@ -64,6 +65,17 @@
     blocks
 
   build: ->
+    if @debug
+      console.log '[Showcase]', 'building showcase'
+      console.log '[Showcase]', '@background is', @background
+      console.log '[Showcase]', '@accent is', @accent
+      console.log '[Showcase]', '@location is', @location
+      console.log '[Showcase]', '@radius is', @radius
+      console.log '[Showcase]', '@title is', @title
+      console.log '[Showcase]', '@caption is', @caption
+      console.log '[Showcase]', '@action is', @action
+      console.log '[Showcase]', '@callback was', (if @callback is no then 'not ' else '') + 'set'
+      
     @_product = $('<div/>').css
       bottom: 0
       left: 0
@@ -86,6 +98,7 @@
       color: '#fff'
       cursor: 'default'
       opacity: 0
+      zIndex: 10000
 
     [blockLeft, blockTop, blockRight, blockBottom] = @buildBlocks()
 
@@ -106,25 +119,26 @@
 
     [widthLoaded, heightLoaded] = [window.innerWidth, window.innerHeight]
 
-    $(window).off('resize.showcase').on 'resize.showcase', =>
-      x = @location[0] + window.innerWidth - widthLoaded
-      y = @location[1] + window.innerHeight - heightLoaded
-
-      blockLeft.css { right: window.innerWidth - x }
-      blockRight.css { left: x + @radius * 2 }
-
-      blockTop.add(blockBottom).css
-        left: x
-        right: window.innerWidth - x - @radius * 2
-
-      blockTop.css { bottom: window.innerHeight - y }
-      blockBottom.css { top: y + @radius * 2 }
-
-      clipperContainer.css
-        clip: "rect(#{y}px,#{x + @radius * 2}px,#{y + @radius * 2}px,#{x}px)"
-      clipper.css { left: x, top: y }
-      cling.css { left: x - 16, top: y - 16 }
-    .trigger 'resize'
+    if @location isnt null
+      $(window).off('resize.showcase').on 'resize.showcase', =>
+        x = @location[0] + window.innerWidth - widthLoaded
+        y = @location[1] + window.innerHeight - heightLoaded
+  
+        blockLeft.css { right: window.innerWidth - x }
+        blockRight.css { left: x + @radius * 2 }
+  
+        blockTop.add(blockBottom).css
+          left: x
+          right: window.innerWidth - x - @radius * 2
+  
+        blockTop.css { bottom: window.innerHeight - y }
+        blockBottom.css { top: y + @radius * 2 }
+  
+        clipperContainer.css
+          clip: "rect(#{y}px,#{x + @radius * 2}px,#{y + @radius * 2}px,#{x}px)"
+        clipper.css { left: x, top: y }
+        cling.css { left: x - 16, top: y - 16 }
+      .trigger 'resize'
 
     textContent = $('<div/>').appendTo(@_product).css
       textAlign: 'left'
@@ -151,6 +165,10 @@
     .on 'mouseenter mouseup', => button.css { background: "rgba(#{@accent.join(',')},.65)" }
     .on 'mousedown', => button.css { background: "rgba(#{@accent.join(',')},.55)" }
     .on 'mouseleave', => button.css { background: "rgba(#{@accent.join(',')},.6)" }
-    .on 'click', => @callback() if @callback
+    .on 'click', =>
+      if @callback
+        @callback()
+      else
+        @dispose()
 
     @_product.animate { opacity: 1 }, 250

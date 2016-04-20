@@ -1,9 +1,9 @@
 {
   "name": "showcase.js",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "ShowcaseView on client-side",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "coffee -c index.coffee"
   },
   "repository": {
     "type": "git",
