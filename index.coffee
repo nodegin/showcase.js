@@ -7,7 +7,7 @@
   else
     glob.eve = factory
 
-) window, new class Showcase
+) window, class Showcase
 
   _product: null
   background: 'rgba(0,0,0,0)'

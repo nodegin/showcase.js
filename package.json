@@ -1,6 +1,6 @@
 {
   "name": "showcase.js",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "ShowcaseView on client-side",
   "scripts": {
     "build": "coffee -c index.coffee"

@@ -12,7 +12,7 @@
     } else {
       return glob.eve = factory;
     }
-  })(window, new (Showcase = (function() {
+  })(window, Showcase = (function() {
     function Showcase() {}
 
     Showcase.prototype._product = null;
@@ -249,6 +249,6 @@
 
     return Showcase;
 
-  })()));
+  })());
 
 }).call(this);
