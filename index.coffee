@@ -146,12 +146,12 @@
       textAlign: 'left'
       width: 400
       zIndex: 2
-    .append $('<span/>').text(@title).css
+    .append $('<span/>').html(@title).css
       color: "rgb(#{@accent.join(',')})"
       display: 'block'
       fontSize: '16pt'
       marginBottom: '2rem'
-    .append $('<span/>').text(@caption).css
+    .append $('<span/>').html(@caption).css
       lineHeight: '28px'
 
     buttonWrapper = $('<div/>').appendTo(textContent).css

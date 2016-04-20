@@ -197,12 +197,12 @@
         textAlign: 'left',
         width: 400,
         zIndex: 2
-      }).append($('<span/>').text(this.title).css({
+      }).append($('<span/>').html(this.title).css({
         color: "rgb(" + (this.accent.join(',')) + ")",
         display: 'block',
         fontSize: '16pt',
         marginBottom: '2rem'
-      })).append($('<span/>').text(this.caption).css({
+      })).append($('<span/>').html(this.caption).css({
         lineHeight: '28px'
       }));
       buttonWrapper = $('<div/>').appendTo(textContent).css({
