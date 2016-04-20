@@ -156,7 +156,7 @@
       });
       ref1 = [window.innerWidth, window.innerHeight], widthLoaded = ref1[0], heightLoaded = ref1[1];
       if (this.location === null) {
-        cling.hide();
+        cling.add(blockTop).add(blockRight).add(blockBottom).hide();
       } else {
         $(window).off('resize.showcase').on('resize.showcase', (function(_this) {
           return function() {

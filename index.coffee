@@ -120,7 +120,7 @@
     [widthLoaded, heightLoaded] = [window.innerWidth, window.innerHeight]
 
     if @location is null
-      cling.hide()
+      cling.add(blockTop).add(blockRight).add(blockBottom).hide()
     else
       $(window).off('resize.showcase').on 'resize.showcase', =>
         x = @location[0] + window.innerWidth - widthLoaded
