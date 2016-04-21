@@ -8,9 +8,9 @@ Only ~180 lines of CoffeeScript code :coffee:
 
 ## Usage
 
-Simply requires it and it will returns a new showcase
+Require the showcase class and create a new showcase instance
 
-![usage](https://cloud.githubusercontent.com/assets/8536244/12004316/b0458c7e-ab8a-11e5-8ce3-4db8f0cbc1c5.png)
+![usage](https://na.cx/i/07Ozk6.png)
 
 ## Install
 
